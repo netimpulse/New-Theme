@@ -1,14 +1,14 @@
 <section class="sf" data-section-id="{{ section.id }}">
   <div class="sf__head">
     <h2>{{ section.settings.heading | default: '@brand.name' | escape }}</h2>
-    {%- if section.settings.link \!= blank -%}
+    {%- if section.settings.link != blank -%}
       <a href="{{ section.settings.link }}" target="_blank" rel="noopener">Folgen →</a>
     {%- endif -%}
   </div>
   <div class="sf__grid" style="--cols: {{ section.settings.columns }};">
     {%- for block in section.blocks -%}
       <a href="{{ block.settings.link | default: '#' }}" target="_blank" rel="noopener" class="sf__item" {{ block.shopify_attributes }}>
-        {%- if block.settings.image \!= blank -%}
+        {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 600 | image_tag:
              loading: 'lazy',
              sizes: '(min-width: 990px) 20vw, 33vw',

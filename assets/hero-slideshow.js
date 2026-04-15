@@ -5,7 +5,7 @@
       this.slides = this.querySelectorAll('.hero__slide');
       this.dots = this.querySelectorAll('.hero__dot');
       this.index = 0;
-      if (\!this.slides.length) return;
+      if (!this.slides.length) return;
       this.querySelector('[data-next]')?.addEventListener('click', () => this.go(this.index + 1));
       this.querySelector('[data-prev]')?.addEventListener('click', () => this.go(this.index - 1));
       this.dots.forEach((d, i) => d.addEventListener('click', () => this.go(i)));

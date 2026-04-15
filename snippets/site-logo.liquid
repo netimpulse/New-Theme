@@ -3,7 +3,7 @@
   Akzeptiert: settings (section.settings)
 {%- endcomment -%}
 <a href="{{ routes.root_url }}" class="site-logo" aria-label="{{ shop.name | escape }}">
-  {%- if settings.logo \!= blank -%}
+  {%- if settings.logo != blank -%}
     {{
       settings.logo
       | image_url: width: settings.logo_width | times: 2

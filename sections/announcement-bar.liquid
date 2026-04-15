@@ -10,7 +10,7 @@
     <announcement-bar class="announcement-bar__track" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.speed }}">
       {%- for block in section.blocks -%}
         <div class="announcement-bar__slide" {{ block.shopify_attributes }}>
-          {%- if block.settings.link \!= blank -%}
+          {%- if block.settings.link != blank -%}
             <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
           {%- else -%}
             <span>{{ block.settings.text | escape }}</span>
@@ -48,7 +48,7 @@
     text-underline-offset: 2px;
   }
   @media (prefers-reduced-motion: reduce) {
-    .announcement-bar__slide { transition: none \!important; }
+    .announcement-bar__slide { transition: none !important; }
   }
 {% endstylesheet %}
 
@@ -58,7 +58,7 @@
     class AnnouncementBar extends HTMLElement {
       connectedCallback() {
         this.slides = this.querySelectorAll('.announcement-bar__slide');
-        if (\!this.slides.length) return;
+        if (!this.slides.length) return;
         this.index = 0;
         this.slides[0].classList.add('is-active');
         const autoplay = this.dataset.autoplay === 'true';

@@ -1,8 +1,8 @@
 <section class="nl" data-section-id="{{ section.id }}">
   <div class="nl__inner">
-    {%- if section.settings.eyebrow \!= blank -%}<p class="nl__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    {%- if section.settings.eyebrow != blank -%}<p class="nl__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
     <h2 class="nl__heading">{{ section.settings.heading | escape | default: 'Newsletter' }}</h2>
-    {%- if section.settings.text \!= blank -%}<div class="nl__text">{{ section.settings.text }}</div>{%- endif -%}
+    {%- if section.settings.text != blank -%}<div class="nl__text">{{ section.settings.text }}</div>{%- endif -%}
     {%- form 'customer', class: 'nl__form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
       <label for="Newsletter-{{ section.id }}" class="visually-hidden">E-Mail-Adresse</label>

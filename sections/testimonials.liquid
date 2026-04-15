@@ -1,5 +1,5 @@
 <section class="tm" data-section-id="{{ section.id }}">
-  {%- if section.settings.heading \!= blank -%}<h2 class="tm__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+  {%- if section.settings.heading != blank -%}<h2 class="tm__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
   <div class="tm__grid" style="--cols: {{ section.settings.columns }};">
     {%- for block in section.blocks -%}
       <figure class="tm__card" {{ block.shopify_attributes }}>
@@ -13,7 +13,7 @@
         <blockquote class="tm__quote">{{ block.settings.quote }}</blockquote>
         <figcaption class="tm__author">
           <strong>{{ block.settings.author | escape }}</strong>
-          {%- if block.settings.meta \!= blank -%}<span>{{ block.settings.meta | escape }}</span>{%- endif -%}
+          {%- if block.settings.meta != blank -%}<span>{{ block.settings.meta | escape }}</span>{%- endif -%}
         </figcaption>
       </figure>
     {%- endfor -%}

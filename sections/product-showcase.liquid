@@ -1,7 +1,7 @@
 {%- liquid
   assign product = section.settings.product
   assign has_product = false
-  if product \!= blank
+  if product != blank
     assign has_product = true
   endif
   if has_product
@@ -18,7 +18,7 @@
       {%- liquid
         assign has_video = false
         assign has_3d = false
-        if section.settings.video \!= blank or section.settings.video_url \!= blank
+        if section.settings.video != blank or section.settings.video_url != blank
           assign has_video = true
         endif
         assign first_model = nil
@@ -30,7 +30,7 @@
             endif
           endfor
         endif
-        if first_model \!= nil
+        if first_model != nil
           assign has_3d = true
         endif
       -%}
@@ -55,12 +55,12 @@
             data-autoplay-once="{{ section.settings.autoplay_once }}"
             data-replay-on-hover="true"
           >
-            {%- if section.settings.video \!= blank -%}
+            {%- if section.settings.video != blank -%}
               {%- liquid
                 assign poster_src = ''
-                if section.settings.last_frame \!= blank
+                if section.settings.last_frame != blank
                   assign poster_src = section.settings.last_frame | image_url: width: 1200
-                elsif section.settings.video.preview_image \!= blank
+                elsif section.settings.video.preview_image != blank
                   assign poster_src = section.settings.video.preview_image | image_url: width: 1200
                 endif
               -%}
@@ -69,13 +69,13 @@
                 playsinline
                 muted
                 preload="metadata"
-                {% if poster_src \!= '' %}poster="{{ poster_src }}"{% endif %}
+                {% if poster_src != '' %}poster="{{ poster_src }}"{% endif %}
               >
                 {%- for source in section.settings.video.sources -%}
                   <source src="{{ source.url }}" type="video/{{ source.format }}">
                 {%- endfor -%}
               </video>
-            {%- elsif section.settings.video_url \!= blank -%}
+            {%- elsif section.settings.video_url != blank -%}
               <div class="product-video__embed">
                 {%- if section.settings.video_url.type == 'youtube' -%}
                   <iframe
@@ -97,7 +97,7 @@
               </div>
             {%- endif -%}
 
-            {%- if section.settings.last_frame \!= blank -%}
+            {%- if section.settings.last_frame != blank -%}
               <img
                 class="product-video__poster"
                 {{ section.settings.last_frame | image_url: width: 1600 | image_tag:
@@ -158,7 +158,7 @@
 
     {%- comment -%} ====== INFO / FORM SIDE ====== {%- endcomment -%}
     <div class="product-showcase__info">
-      {%- if section.settings.eyebrow \!= blank -%}
+      {%- if section.settings.eyebrow != blank -%}
         <p class="product-showcase__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
 
@@ -170,11 +170,11 @@
         {%- endif -%}
       </h2>
 
-      {%- if has_product and product.vendor \!= blank and section.settings.show_vendor -%}
+      {%- if has_product and product.vendor != blank and section.settings.show_vendor -%}
         <p class="product-showcase__vendor">{{ product.vendor | escape }}</p>
       {%- endif -%}
 
-      {%- if section.settings.description \!= blank -%}
+      {%- if section.settings.description != blank -%}
         <div class="product-showcase__desc">{{ section.settings.description }}</div>
       {%- elsif has_product -%}
         <div class="product-showcase__desc">{{ product.description | truncatewords: 80 }}</div>
@@ -262,9 +262,9 @@
 
           {%- if section.settings.show_meta -%}
             <ul class="product-showcase__meta" role="list">
-              {%- if section.settings.meta_1 \!= blank -%}<li>{{ section.settings.meta_1 | escape }}</li>{%- endif -%}
-              {%- if section.settings.meta_2 \!= blank -%}<li>{{ section.settings.meta_2 | escape }}</li>{%- endif -%}
-              {%- if section.settings.meta_3 \!= blank -%}<li>{{ section.settings.meta_3 | escape }}</li>{%- endif -%}
+              {%- if section.settings.meta_1 != blank -%}<li>{{ section.settings.meta_1 | escape }}</li>{%- endif -%}
+              {%- if section.settings.meta_2 != blank -%}<li>{{ section.settings.meta_2 | escape }}</li>{%- endif -%}
+              {%- if section.settings.meta_3 != blank -%}<li>{{ section.settings.meta_3 | escape }}</li>{%- endif -%}
             </ul>
           {%- endif -%}
 

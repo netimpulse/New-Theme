@@ -1,7 +1,7 @@
 <section class="iwt iwt--img-{{ section.settings.image_side }}" data-section-id="{{ section.id }}">
   <div class="iwt__grid">
     <div class="iwt__media">
-      {%- if section.settings.image \!= blank -%}
+      {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1400 | image_tag:
            loading: 'lazy',
            sizes: '(min-width: 990px) 50vw, 100vw',
@@ -13,10 +13,10 @@
       {%- endif -%}
     </div>
     <div class="iwt__content">
-      {%- if section.settings.eyebrow \!= blank -%}<p class="iwt__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      {%- if section.settings.heading \!= blank -%}<h2 class="iwt__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
-      {%- if section.settings.text \!= blank -%}<div class="iwt__text">{{ section.settings.text }}</div>{%- endif -%}
-      {%- if section.settings.button_label \!= blank and section.settings.button_link \!= blank -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="iwt__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="iwt__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="iwt__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
         <a class="iwt__btn" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>

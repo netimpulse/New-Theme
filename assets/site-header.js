@@ -2,7 +2,7 @@
   // Drawer controller
   const openDrawer = (name) => {
     const drawer = document.querySelector(`.site-drawer[data-drawer="${name}"]`);
-    if (\!drawer) return;
+    if (!drawer) return;
     drawer.setAttribute('aria-hidden', 'false');
     document.documentElement.style.overflow = 'hidden';
     const panel = drawer.querySelector('.site-drawer__panel');
@@ -31,7 +31,7 @@
       e.preventDefault();
       const name = toggler.dataset.drawerToggle;
       const drawer = document.querySelector(`.site-drawer[data-drawer="${name}"]`);
-      if (\!drawer) return;
+      if (!drawer) return;
       const isOpen = drawer.getAttribute('aria-hidden') === 'false';
       if (isOpen) {
         closeDrawer(drawer);
@@ -58,7 +58,7 @@
   const updateCartCount = async () => {
     try {
       const res = await fetch('/cart.js', { headers: { Accept: 'application/json' } });
-      if (\!res.ok) return;
+      if (!res.ok) return;
       const cart = await res.json();
       document.querySelectorAll('[data-cart-count]').forEach((el) => {
         el.textContent = cart.item_count;
@@ -76,7 +76,7 @@
   // Listen for quick-add / add-to-cart forms
   document.addEventListener('submit', async (e) => {
     const form = e.target.closest('form[data-quick-add-form]');
-    if (\!form) return;
+    if (!form) return;
     e.preventDefault();
     const formData = new FormData(form);
     const btn = form.querySelector('button[type="submit"]');

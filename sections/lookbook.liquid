@@ -1,8 +1,8 @@
 <section class="lookbook" data-section-id="{{ section.id }}">
-  {%- if section.settings.heading \!= blank -%}
+  {%- if section.settings.heading != blank -%}
     <div class="lookbook__head">
       <h2>{{ section.settings.heading | escape }}</h2>
-      {%- if section.settings.subheading \!= blank -%}<p>{{ section.settings.subheading | escape }}</p>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading | escape }}</p>{%- endif -%}
     </div>
   {%- endif -%}
 
@@ -10,7 +10,7 @@
     {%- for block in section.blocks -%}
       <div class="lookbook__scene {% if block.settings.size == 'wide' %}lookbook__scene--wide{% endif %}" {{ block.shopify_attributes }}>
         <div class="lookbook__media">
-          {%- if block.settings.image \!= blank -%}
+          {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 1800 | image_tag:
                loading: 'lazy',
                sizes: '(min-width: 990px) 66vw, 100vw',
@@ -30,14 +30,14 @@
               assign y = block.settings[y_key]
               assign prod = block.settings[prod_key]
             -%}
-            {%- if prod \!= blank -%}
+            {%- if prod != blank -%}
               <a class="lookbook__hotspot"
                  style="left: {{ x }}%; top: {{ y }}%;"
                  href="{{ prod.url }}"
                  aria-label="{{ prod.title | escape }}">
                 <span class="lookbook__hotspot-dot"></span>
                 <span class="lookbook__hotspot-card">
-                  {%- if prod.featured_image \!= blank -%}
+                  {%- if prod.featured_image != blank -%}
                     {{ prod.featured_image | image_url: width: 200 | image_tag:
                        loading: 'lazy', sizes: '80px', widths: '80,120,160',
                        alt: prod.title | escape, class: 'lookbook__hotspot-img' }}
@@ -51,7 +51,7 @@
             {%- endif -%}
           {%- endfor -%}
         </div>
-        {%- if block.settings.caption \!= blank -%}
+        {%- if block.settings.caption != blank -%}
           <figcaption class="lookbook__caption">{{ block.settings.caption | escape }}</figcaption>
         {%- endif -%}
       </div>

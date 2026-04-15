@@ -2,7 +2,7 @@
   <div class="site-footer__inner">
     {%- comment -%} Brand / about column {%- endcomment -%}
     <div class="site-footer__col site-footer__col--brand">
-      {%- if section.settings.logo \!= blank -%}
+      {%- if section.settings.logo != blank -%}
         {{
           section.settings.logo
           | image_url: width: 300
@@ -17,25 +17,25 @@
         <p class="site-footer__brand">{{ shop.name | escape }}</p>
       {%- endif -%}
 
-      {%- if section.settings.about \!= blank -%}
+      {%- if section.settings.about != blank -%}
         <div class="site-footer__about">{{ section.settings.about }}</div>
       {%- endif -%}
 
       {%- if section.settings.show_socials -%}
         <ul class="site-footer__socials" role="list">
-          {%- if section.settings.social_instagram \!= blank -%}
+          {%- if section.settings.social_instagram != blank -%}
             <li><a href="{{ section.settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{{ 'icon-instagram.svg' | inline_asset_content }}</a></li>
           {%- endif -%}
-          {%- if section.settings.social_tiktok \!= blank -%}
+          {%- if section.settings.social_tiktok != blank -%}
             <li><a href="{{ section.settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">{{ 'icon-tiktok.svg' | inline_asset_content }}</a></li>
           {%- endif -%}
-          {%- if section.settings.social_facebook \!= blank -%}
+          {%- if section.settings.social_facebook != blank -%}
             <li><a href="{{ section.settings.social_facebook }}" aria-label="Facebook" target="_blank" rel="noopener">{{ 'icon-facebook.svg' | inline_asset_content }}</a></li>
           {%- endif -%}
-          {%- if section.settings.social_youtube \!= blank -%}
+          {%- if section.settings.social_youtube != blank -%}
             <li><a href="{{ section.settings.social_youtube }}" aria-label="YouTube" target="_blank" rel="noopener">{{ 'icon-youtube.svg' | inline_asset_content }}</a></li>
           {%- endif -%}
-          {%- if section.settings.social_pinterest \!= blank -%}
+          {%- if section.settings.social_pinterest != blank -%}
             <li><a href="{{ section.settings.social_pinterest }}" aria-label="Pinterest" target="_blank" rel="noopener">{{ 'icon-pinterest.svg' | inline_asset_content }}</a></li>
           {%- endif -%}
         </ul>
@@ -48,7 +48,7 @@
         {%- when 'menu' -%}
           <div class="site-footer__col site-footer__col--menu" {{ block.shopify_attributes }}>
             <h4 class="site-footer__heading">{{ block.settings.heading | escape }}</h4>
-            {%- if block.settings.menu \!= blank -%}
+            {%- if block.settings.menu != blank -%}
               <ul class="site-footer__list" role="list">
                 {%- for link in block.settings.menu.links -%}
                   <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
@@ -59,14 +59,14 @@
         {%- when 'text' -%}
           <div class="site-footer__col site-footer__col--text" {{ block.shopify_attributes }}>
             <h4 class="site-footer__heading">{{ block.settings.heading | escape }}</h4>
-            {%- if block.settings.text \!= blank -%}
+            {%- if block.settings.text != blank -%}
               <div class="site-footer__text">{{ block.settings.text }}</div>
             {%- endif -%}
           </div>
         {%- when 'newsletter' -%}
           <div class="site-footer__col site-footer__col--newsletter" {{ block.shopify_attributes }}>
             <h4 class="site-footer__heading">{{ block.settings.heading | escape }}</h4>
-            {%- if block.settings.text \!= blank -%}
+            {%- if block.settings.text != blank -%}
               <p class="site-footer__newsletter-text">{{ block.settings.text | escape }}</p>
             {%- endif -%}
             {%- form 'customer', class: 'site-footer__newsletter-form' -%}

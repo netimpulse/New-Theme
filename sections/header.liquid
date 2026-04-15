@@ -17,7 +17,7 @@
         data-drawer-toggle="mega-menu"
       >
         {{ 'icon-menu.svg' | inline_asset_content }}
-        {%- if section.settings.burger_label \!= blank -%}
+        {%- if section.settings.burger_label != blank -%}
           <span class="site-header__burger-label">{{ section.settings.burger_label | escape }}</span>
         {%- endif -%}
       </button>
@@ -104,7 +104,7 @@
       </div>
 
       <div class="site-drawer__menu">
-        {%- if section.settings.drawer_menu \!= blank -%}
+        {%- if section.settings.drawer_menu != blank -%}
           <ul class="site-drawer__list" role="list">
             {%- for link in section.settings.drawer_menu.links -%}
               <li class="site-drawer__item {% if link.links.size > 0 %}site-drawer__item--has-children{% endif %}">
@@ -146,7 +146,7 @@
               <div class="site-drawer__extra-item" {{ block.shopify_attributes }}>
                 {%- case block.type -%}
                   {%- when 'promo_card' -%}
-                    {%- if block.settings.image \!= blank -%}
+                    {%- if block.settings.image != blank -%}
                       <a href="{{ block.settings.link | default: '#' }}" class="site-drawer__promo">
                         {{ block.settings.image | image_url: width: 600 | image_tag:
                            loading: 'lazy',
@@ -156,12 +156,12 @@
                            class: 'site-drawer__promo-image' }}
                         <div class="site-drawer__promo-content">
                           <strong>{{ block.settings.heading | escape }}</strong>
-                          {%- if block.settings.text \!= blank -%}<p>{{ block.settings.text | escape }}</p>{%- endif -%}
+                          {%- if block.settings.text != blank -%}<p>{{ block.settings.text | escape }}</p>{%- endif -%}
                         </div>
                       </a>
                     {%- endif -%}
                   {%- when 'text_link' -%}
-                    {%- if block.settings.link \!= blank -%}
+                    {%- if block.settings.link != blank -%}
                       <a href="{{ block.settings.link }}" class="site-drawer__text-link">{{ block.settings.text | escape }}</a>
                     {%- endif -%}
                 {%- endcase -%}

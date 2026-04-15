@@ -4,11 +4,11 @@
 -%}
 <section class="fp" data-section-id="{{ section.id }}">
   <div class="fp__head">
-    {%- if section.settings.heading \!= blank -%}<h2 class="fp__title">{{ section.settings.heading | escape }}</h2>{%- endif -%}
-    {%- if coll \!= blank -%}<a class="fp__view-all" href="{{ coll.url }}">Alle anzeigen →</a>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="fp__title">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    {%- if coll != blank -%}<a class="fp__view-all" href="{{ coll.url }}">Alle anzeigen →</a>{%- endif -%}
   </div>
   <div class="fp__grid" style="--cols: {{ section.settings.columns }};">
-    {%- if coll \!= blank -%}
+    {%- if coll != blank -%}
       {%- for product in coll.products limit: limit -%}
         {%- render 'product-card', product: product, show_vendor: section.settings.show_vendor -%}
       {%- endfor -%}

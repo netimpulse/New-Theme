@@ -1,8 +1,8 @@
 <section class="coll-grid" data-section-id="{{ section.id }}">
-  {%- if section.settings.heading \!= blank -%}
+  {%- if section.settings.heading != blank -%}
     <div class="coll-grid__head">
       <h2 class="coll-grid__title">{{ section.settings.heading | escape }}</h2>
-      {%- if section.settings.subheading \!= blank -%}
+      {%- if section.settings.subheading != blank -%}
         <p class="coll-grid__sub">{{ section.settings.subheading | escape }}</p>
       {%- endif -%}
     </div>
@@ -13,17 +13,17 @@
       {%- liquid
         assign col = block.settings.collection
         assign link = block.settings.link
-        if link == blank and col \!= blank
+        if link == blank and col != blank
           assign link = col.url
         endif
         assign img = block.settings.image
-        if img == blank and col \!= blank
+        if img == blank and col != blank
           assign img = col.featured_image | default: col.products.first.featured_image
         endif
       -%}
       <a href="{{ link | default: '#' }}" class="coll-grid__card" {{ block.shopify_attributes }}>
         <div class="coll-grid__media">
-          {%- if img \!= blank -%}
+          {%- if img != blank -%}
             {{ img | image_url: width: 900 | image_tag:
                loading: 'lazy',
                sizes: '(min-width: 990px) 33vw, 50vw',
@@ -36,7 +36,7 @@
         </div>
         <div class="coll-grid__caption">
           <h3>{{ block.settings.heading | default: col.title | escape }}</h3>
-          {%- if block.settings.subtext \!= blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
+          {%- if block.settings.subtext != blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
         </div>
       </a>
     {%- endfor -%}

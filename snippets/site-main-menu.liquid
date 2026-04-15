@@ -2,7 +2,7 @@
   Rendert Haupt-Menü im Header (Desktop).
   Akzeptiert: menu (link_list)
 {%- endcomment -%}
-{%- if menu \!= blank and menu.links.size > 0 -%}
+{%- if menu != blank and menu.links.size > 0 -%}
   <nav class="site-main-menu" aria-label="Haupt-Menü">
     <ul class="site-main-menu__list" role="list">
       {%- for link in menu.links -%}

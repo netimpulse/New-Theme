@@ -2,7 +2,7 @@
   <div class="usp-bar__inner">
     {%- for block in section.blocks -%}
       <div class="usp-bar__item" {{ block.shopify_attributes }}>
-        {%- if block.settings.icon \!= blank -%}
+        {%- if block.settings.icon != blank -%}
           <div class="usp-bar__icon">
             {{ block.settings.icon | image_url: width: 96 | image_tag:
                loading: 'lazy', sizes: '48px', widths: '48,96,144', alt: block.settings.heading | default: '' | escape }}
@@ -10,7 +10,7 @@
         {%- endif -%}
         <div class="usp-bar__text">
           <strong>{{ block.settings.heading | escape }}</strong>
-          {%- if block.settings.subtext \!= blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
+          {%- if block.settings.subtext != blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
         </div>
       </div>
     {%- endfor -%}

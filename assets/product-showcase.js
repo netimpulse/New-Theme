@@ -2,16 +2,16 @@
   // --- Media tabs ---
   document.addEventListener('click', (e) => {
     const tab = e.target.closest('[data-media-tab]');
-    if (\!tab) return;
+    if (!tab) return;
     const section = tab.closest('.product-showcase');
-    if (\!section) return;
+    if (!section) return;
     const name = tab.dataset.mediaTab;
     section.querySelectorAll('[data-media-tab]').forEach(b => { b.classList.toggle('is-active', b === tab); b.setAttribute('aria-selected', b === tab); });
     section.querySelectorAll('[data-media-panel]').forEach(p => p.classList.toggle('is-active', p.dataset.mediaPanel === name));
   });
 
   // --- <product-video> custom element: autoplay once + hover replay + end-frame poster ---
-  if (\!customElements.get('product-video')) {
+  if (!customElements.get('product-video')) {
     class ProductVideo extends HTMLElement {
       connectedCallback() {
         this.video = this.querySelector('.product-video__el');
@@ -22,7 +22,7 @@
         const replayOnHover = this.dataset.replayOnHover === 'true';
         const autoplayOnce = this.dataset.autoplayOnce === 'true';
 
-        if (\!this.video) return; // YouTube/Vimeo embed: nothing to hook into
+        if (!this.video) return; // YouTube/Vimeo embed: nothing to hook into
 
         this.video.muted = true;
         this.video.playsInline = true;
@@ -33,7 +33,7 @@
         // Autoplay once when in view
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && autoplayOnce && \!this.hasPlayed) {
+            if (entry.isIntersecting && autoplayOnce && !this.hasPlayed) {
               this.video.currentTime = 0;
               this.video.play().catch(() => {});
               this.hasPlayed = true;
@@ -59,7 +59,7 @@
         this.classList.remove('is-playing');
         this.classList.add('is-ended');
         // Capture last frame to canvas if no custom poster
-        if (this.posterCanvas && \!this.posterImg) {
+        if (this.posterCanvas && !this.posterImg) {
           try {
             const w = this.video.videoWidth;
             const h = this.video.videoHeight;
@@ -74,7 +74,7 @@
       }
 
       replay() {
-        if (\!this.video) return;
+        if (!this.video) return;
         this.classList.remove('is-ended');
         try {
           this.video.currentTime = 0;
@@ -86,7 +86,7 @@
   }
 
   // --- Variant switching + add-to-cart ---
-  if (\!customElements.get('product-form')) {
+  if (!customElements.get('product-form')) {
     class ProductForm extends HTMLElement {
       connectedCallback() {
         const dataEl = this.querySelector('[data-product-json]');
@@ -134,7 +134,7 @@
 
         if (match) {
           this.idInput.value = match.id;
-          this.submitBtn.disabled = \!match.available;
+          this.submitBtn.disabled = !match.available;
           const lbl = this.submitBtn.querySelector('[data-atc-label]');
           if (lbl) lbl.textContent = match.available ? 'In den Warenkorb' : 'Ausverkauft';
           // Price
