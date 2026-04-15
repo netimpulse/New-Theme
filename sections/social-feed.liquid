@@ -1,0 +1,63 @@
+<section class="sf" data-section-id="{{ section.id }}">
+  <div class="sf__head">
+    <h2>{{ section.settings.heading | default: '@brand.name' | escape }}</h2>
+    {%- if section.settings.link \!= blank -%}
+      <a href="{{ section.settings.link }}" target="_blank" rel="noopener">Folgen →</a>
+    {%- endif -%}
+  </div>
+  <div class="sf__grid" style="--cols: {{ section.settings.columns }};">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.link | default: '#' }}" target="_blank" rel="noopener" class="sf__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.image \!= blank -%}
+          {{ block.settings.image | image_url: width: 600 | image_tag:
+             loading: 'lazy',
+             sizes: '(min-width: 990px) 20vw, 33vw',
+             widths: '300,450,600',
+             alt: 'Social Post', class: 'sf__image' }}
+        {%- else -%}
+          {{ 'lifestyle-3' | placeholder_svg_tag }}
+        {%- endif -%}
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --sf-bg: {{ section.settings.bg_color }};
+    --sf-fg: {{ section.settings.text_color }};
+    --sf-padding-top: {{ section.settings.padding_top }}px;
+    --sf-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+{{ 'section-social-feed.css' | asset_url | stylesheet_tag }}
+{% schema %}
+{
+  "name": "Social Feed",
+  "tag": "section",
+  "class": "section-social-feed",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Folge uns" },
+    { "type": "url", "id": "link", "label": "Profil-Link" },
+    { "type": "range", "id": "columns", "min": 3, "max": 6, "step": 1, "label": "Spalten (Desktop)", "default": 5 },
+    { "type": "color", "id": "bg_color", "label": "Hintergrund", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand oben", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand unten", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "limit": 10,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "url", "id": "link", "label": "Link zum Post" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Social Feed", "blocks": [ { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" } ] }
+  ],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

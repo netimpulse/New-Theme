@@ -1,0 +1,24 @@
+{%- comment -%}
+  Rendert Haupt-Menü im Header (Desktop).
+  Akzeptiert: menu (link_list)
+{%- endcomment -%}
+{%- if menu \!= blank and menu.links.size > 0 -%}
+  <nav class="site-main-menu" aria-label="Haupt-Menü">
+    <ul class="site-main-menu__list" role="list">
+      {%- for link in menu.links -%}
+        <li class="site-main-menu__item {% if link.active or link.child_active %}is-active{% endif %}">
+          <a href="{{ link.url }}" class="site-main-menu__link">{{ link.title | escape }}</a>
+          {%- if link.links.size > 0 -%}
+            <div class="site-main-menu__submenu">
+              <ul class="site-main-menu__sublist" role="list">
+                {%- for sub in link.links -%}
+                  <li><a href="{{ sub.url }}" class="site-main-menu__sublink">{{ sub.title | escape }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}

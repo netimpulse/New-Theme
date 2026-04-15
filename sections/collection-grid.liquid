@@ -1,0 +1,98 @@
+<section class="coll-grid" data-section-id="{{ section.id }}">
+  {%- if section.settings.heading \!= blank -%}
+    <div class="coll-grid__head">
+      <h2 class="coll-grid__title">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.subheading \!= blank -%}
+        <p class="coll-grid__sub">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="coll-grid__items" style="--cols: {{ section.settings.columns }};">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign col = block.settings.collection
+        assign link = block.settings.link
+        if link == blank and col \!= blank
+          assign link = col.url
+        endif
+        assign img = block.settings.image
+        if img == blank and col \!= blank
+          assign img = col.featured_image | default: col.products.first.featured_image
+        endif
+      -%}
+      <a href="{{ link | default: '#' }}" class="coll-grid__card" {{ block.shopify_attributes }}>
+        <div class="coll-grid__media">
+          {%- if img \!= blank -%}
+            {{ img | image_url: width: 900 | image_tag:
+               loading: 'lazy',
+               sizes: '(min-width: 990px) 33vw, 50vw',
+               widths: '300,450,600,750,900',
+               alt: block.settings.heading | default: col.title | escape,
+               class: 'coll-grid__image' }}
+          {%- else -%}
+            {{ 'lifestyle-3' | placeholder_svg_tag: 'coll-grid__placeholder' }}
+          {%- endif -%}
+        </div>
+        <div class="coll-grid__caption">
+          <h3>{{ block.settings.heading | default: col.title | escape }}</h3>
+          {%- if block.settings.subtext \!= blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --cg-bg: {{ section.settings.bg_color }};
+    --cg-fg: {{ section.settings.text_color }};
+    --cg-padding-top: {{ section.settings.padding_top }}px;
+    --cg-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+{{ 'section-collection-grid.css' | asset_url | stylesheet_tag }}
+{% schema %}
+{
+  "name": "Kollektionen-Grid",
+  "tag": "section",
+  "class": "section-collection-grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Shop by Category" },
+    { "type": "text", "id": "subheading", "label": "Unterüberschrift" },
+    {
+      "type": "range", "id": "columns", "min": 2, "max": 6, "step": 1,
+      "label": "Spalten (Desktop)", "default": 3
+    },
+    { "type": "color", "id": "bg_color", "label": "Hintergrund", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand oben", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand unten", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Kategorie",
+      "limit": 12,
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Kollektion" },
+        { "type": "image_picker", "id": "image", "label": "Bild (überschreibt Kollektions-Bild)" },
+        { "type": "text", "id": "heading", "label": "Überschrift (überschreibt Kollektions-Titel)" },
+        { "type": "text", "id": "subtext", "label": "Untertext" },
+        { "type": "url", "id": "link", "label": "Link (überschreibt Kollektions-URL)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kollektionen-Grid",
+      "blocks": [
+        { "type": "category", "settings": { "heading": "Damen" } },
+        { "type": "category", "settings": { "heading": "Herren" } },
+        { "type": "category", "settings": { "heading": "Jacken" } },
+        { "type": "category", "settings": { "heading": "Accessoires" } }
+      ]
+    }
+  ],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

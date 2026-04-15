@@ -1,0 +1,57 @@
+<section class="usp-bar" data-section-id="{{ section.id }}">
+  <div class="usp-bar__inner">
+    {%- for block in section.blocks -%}
+      <div class="usp-bar__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon \!= blank -%}
+          <div class="usp-bar__icon">
+            {{ block.settings.icon | image_url: width: 96 | image_tag:
+               loading: 'lazy', sizes: '48px', widths: '48,96,144', alt: block.settings.heading | default: '' | escape }}
+          </div>
+        {%- endif -%}
+        <div class="usp-bar__text">
+          <strong>{{ block.settings.heading | escape }}</strong>
+          {%- if block.settings.subtext \!= blank -%}<span>{{ block.settings.subtext | escape }}</span>{%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{% style %}
+  #shopify-section-{{ section.id }} { --usp-bg: {{ section.settings.bg_color }}; --usp-fg: {{ section.settings.text_color }}; }
+{% endstyle %}
+{{ 'section-usp-bar.css' | asset_url | stylesheet_tag }}
+{% schema %}
+{
+  "name": "USP-Bar",
+  "tag": "section",
+  "class": "section-usp-bar",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Hintergrund", "default": "#f6f5f2" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP",
+      "limit": 6,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon (optional)" },
+        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Kostenloser Versand" },
+        { "type": "text", "id": "subtext", "label": "Untertext", "default": "Ab 80 € Bestellwert" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP-Bar",
+      "blocks": [
+        { "type": "usp", "settings": { "heading": "Kostenloser Versand", "subtext": "Ab 80 €" } },
+        { "type": "usp", "settings": { "heading": "30 Tage Rückgabe", "subtext": "Unkompliziert" } },
+        { "type": "usp", "settings": { "heading": "Sichere Bezahlung", "subtext": "SSL-verschlüsselt" } },
+        { "type": "usp", "settings": { "heading": "Nachhaltig", "subtext": "Zertifizierte Materialien" } }
+      ]
+    }
+  ],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}
