@@ -8,36 +8,30 @@
   - show_quick_add: {Boolean} (optional, default: true)
 {%- endcomment -%}
 {%- liquid
-  if product == blank or product == nil
-    assign placeholder = true
-  endif
   assign card_sizes = sizes | default: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw'
+  assign card_widths = '300,450,600,750,900,1200'
+  assign product_title_safe = product.title | default: 'Beispielprodukt' | escape
+  assign primary_alt = product.featured_media.alt | default: product.title | escape
 -%}
 <article class="product-card">
-  <a class="product-card__media-link" href="{{ product.url | default: '#' }}"
-     aria-label="{{ product.title | default: 'Produkt' | escape }}">
+  <a class="product-card__media-link" href="{{ product.url | default: '#' }}" aria-label="{{ product_title_safe }}">
     <div class="product-card__media">
       {%- if product.featured_media != blank -%}
-        {{
-          product.featured_media
-          | image_url: width: 800
-          | image_tag:
-            loading: 'lazy',
-            sizes: card_sizes,
-            widths: '300,450,600,750,900,1200',
-            alt: product.featured_media.alt | default: product.title | escape,
-            class: 'product-card__image product-card__image--primary'
+        {{ product.featured_media | image_url: width: 800 | image_tag:
+          loading: 'lazy',
+          sizes: card_sizes,
+          widths: card_widths,
+          alt: primary_alt,
+          class: 'product-card__image product-card__image--primary'
         }}
         {%- if product.media.size > 1 -%}
-          {{
-            product.media[1]
-            | image_url: width: 800
-            | image_tag:
-              loading: 'lazy',
-              sizes: card_sizes,
-              widths: '300,450,600,750,900,1200',
-              alt: product.media[1].alt | default: product.title | escape,
-              class: 'product-card__image product-card__image--secondary'
+          {%- assign secondary_alt = product.media[1].alt | default: product.title | escape -%}
+          {{ product.media[1] | image_url: width: 800 | image_tag:
+            loading: 'lazy',
+            sizes: card_sizes,
+            widths: card_widths,
+            alt: secondary_alt,
+            class: 'product-card__image product-card__image--secondary'
           }}
         {%- endif -%}
       {%- else -%}
@@ -52,7 +46,7 @@
     {%- endif -%}
 
     <h3 class="product-card__title">
-      <a href="{{ product.url | default: '#' }}">{{ product.title | default: 'Beispielprodukt' | escape }}</a>
+      <a href="{{ product.url | default: '#' }}">{{ product_title_safe }}</a>
     </h3>
 
     {%- render 'product-price', product: product -%}
@@ -61,7 +55,7 @@
   {%- if show_quick_add != false and product.available -%}
     <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-card__quick-add" data-quick-add-form>
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="product-card__quick-add-btn" aria-label="{{ product.title | escape }} in den Warenkorb">
+      <button type="submit" class="product-card__quick-add-btn" aria-label="{{ product_title_safe }} in den Warenkorb">
         + In den Warenkorb
       </button>
     </form>

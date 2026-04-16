@@ -1,4 +1,4 @@
-<section class="lookbook" data-section-id="{{ section.id }}">
+<section class="lookbook color-scheme color-{{ section.settings.color_scheme.id }}" data-section-id="{{ section.id }}">
   {%- if section.settings.heading != blank -%}
     <div class="lookbook__head">
       <h2>{{ section.settings.heading | escape }}</h2>
@@ -11,11 +11,12 @@
       <div class="lookbook__scene {% if block.settings.size == 'wide' %}lookbook__scene--wide{% endif %}" {{ block.shopify_attributes }}>
         <div class="lookbook__media">
           {%- if block.settings.image != blank -%}
+            {%- assign lb_alt = block.settings.caption | default: 'Lookbook' | escape -%}
             {{ block.settings.image | image_url: width: 1800 | image_tag:
                loading: 'lazy',
                sizes: '(min-width: 990px) 66vw, 100vw',
                widths: '600,900,1200,1500,1800',
-               alt: block.settings.caption | default: 'Lookbook' | escape,
+               alt: lb_alt,
                class: 'lookbook__image' }}
           {%- else -%}
             {{ 'lifestyle-1' | placeholder_svg_tag: 'lookbook__placeholder' }}
@@ -38,9 +39,10 @@
                 <span class="lookbook__hotspot-dot"></span>
                 <span class="lookbook__hotspot-card">
                   {%- if prod.featured_image != blank -%}
+                    {%- assign hotspot_alt = prod.title | escape -%}
                     {{ prod.featured_image | image_url: width: 200 | image_tag:
                        loading: 'lazy', sizes: '80px', widths: '80,120,160',
-                       alt: prod.title | escape, class: 'lookbook__hotspot-img' }}
+                       alt: hotspot_alt, class: 'lookbook__hotspot-img' }}
                   {%- endif -%}
                   <span class="lookbook__hotspot-info">
                     <strong>{{ prod.title | escape }}</strong>
@@ -59,6 +61,23 @@
   </div>
 </section>
 {% style %}
+  {%- assign scheme = section.settings.color_scheme -%}
+  {%- if scheme -%}
+  .color-{{ scheme.id }} {
+    --color-background: {{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }};
+    --color-text: {{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }};
+    --color-button: {{ scheme.settings.button_background.red }}, {{ scheme.settings.button_background.green }}, {{ scheme.settings.button_background.blue }};
+    --color-button-label: {{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }};
+    --color-secondary-button-label: {{ scheme.settings.secondary_button_label.red }}, {{ scheme.settings.secondary_button_label.green }}, {{ scheme.settings.secondary_button_label.blue }};
+    --color-border: {{ scheme.settings.border.red }}, {{ scheme.settings.border.green }}, {{ scheme.settings.border.blue }};
+    color: rgb(var(--color-text));
+    background-color: rgb(var(--color-background));
+    {%- if scheme.settings.background_gradient != blank -%}
+    background-image: {{ scheme.settings.background_gradient }};
+    {%- endif -%}
+  }
+  {%- endif -%}
+
   #shopify-section-{{ section.id }} {
     --lb-bg: {{ section.settings.bg_color }};
     --lb-fg: {{ section.settings.text_color }};
@@ -73,12 +92,56 @@
   "tag": "section",
   "class": "section-lookbook",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Lookbook" },
-    { "type": "text", "id": "subheading", "label": "Untertitel", "default": "Shop the look" },
-    { "type": "color", "id": "bg_color", "label": "Hintergrund", "default": "#ffffff" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand oben", "default": 56 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Abstand unten", "default": 56 }
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Lookbook"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Untertitel",
+      "default": "Shop the look"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Hintergrund",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand oben",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand unten",
+      "default": 56
+    }
   ],
   "blocks": [
     {
@@ -86,36 +149,189 @@
       "name": "Lookbook-Szene",
       "limit": 6,
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Bild" },
-        { "type": "text", "id": "caption", "label": "Caption (optional)" },
         {
-          "type": "select", "id": "size", "label": "Größe", "default": "normal",
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption (optional)"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Größe",
+          "default": "normal",
           "options": [
-            { "value": "normal", "label": "Normal" },
-            { "value": "wide", "label": "Breit (2 Spalten)" }
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "wide",
+              "label": "Breit (2 Spalten)"
+            }
           ]
         },
-        { "type": "header", "content": "Hotspots (max. 5)" },
-        { "type": "paragraph", "content": "Produkt auswählen + X/Y in Prozent setzen (0 = links/oben, 100 = rechts/unten)." },
-        { "type": "product", "id": "hotspot_1_product", "label": "Hotspot 1 – Produkt" },
-        { "type": "range", "id": "hotspot_1_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 1 – X", "default": 30 },
-        { "type": "range", "id": "hotspot_1_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 1 – Y", "default": 40 },
-        { "type": "product", "id": "hotspot_2_product", "label": "Hotspot 2 – Produkt" },
-        { "type": "range", "id": "hotspot_2_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 2 – X", "default": 60 },
-        { "type": "range", "id": "hotspot_2_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 2 – Y", "default": 60 },
-        { "type": "product", "id": "hotspot_3_product", "label": "Hotspot 3 – Produkt" },
-        { "type": "range", "id": "hotspot_3_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 3 – X", "default": 50 },
-        { "type": "range", "id": "hotspot_3_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 3 – Y", "default": 50 },
-        { "type": "product", "id": "hotspot_4_product", "label": "Hotspot 4 – Produkt" },
-        { "type": "range", "id": "hotspot_4_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 4 – X", "default": 50 },
-        { "type": "range", "id": "hotspot_4_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 4 – Y", "default": 50 },
-        { "type": "product", "id": "hotspot_5_product", "label": "Hotspot 5 – Produkt" },
-        { "type": "range", "id": "hotspot_5_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 5 – X", "default": 50 },
-        { "type": "range", "id": "hotspot_5_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot 5 – Y", "default": 50 }
+        {
+          "type": "header",
+          "content": "Hotspots (max. 5)"
+        },
+        {
+          "type": "paragraph",
+          "content": "Produkt auswählen + X/Y in Prozent setzen (0 = links/oben, 100 = rechts/unten)."
+        },
+        {
+          "type": "product",
+          "id": "hotspot_1_product",
+          "label": "Hotspot 1 – Produkt"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_1_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 1 – X",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "hotspot_1_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 1 – Y",
+          "default": 40
+        },
+        {
+          "type": "product",
+          "id": "hotspot_2_product",
+          "label": "Hotspot 2 – Produkt"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_2_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 2 – X",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "hotspot_2_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 2 – Y",
+          "default": 60
+        },
+        {
+          "type": "product",
+          "id": "hotspot_3_product",
+          "label": "Hotspot 3 – Produkt"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_3_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 3 – X",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_3_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 3 – Y",
+          "default": 50
+        },
+        {
+          "type": "product",
+          "id": "hotspot_4_product",
+          "label": "Hotspot 4 – Produkt"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_4_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 4 – X",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_4_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 4 – Y",
+          "default": 50
+        },
+        {
+          "type": "product",
+          "id": "hotspot_5_product",
+          "label": "Hotspot 5 – Produkt"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_5_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 5 – X",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_5_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot 5 – Y",
+          "default": 50
+        }
       ]
     }
   ],
-  "presets": [ { "name": "Lookbook", "blocks": [ { "type": "scene" }, { "type": "scene" } ] } ],
-  "disabled_on": { "groups": ["header", "footer"] }
+  "presets": [
+    {
+      "name": "Lookbook",
+      "blocks": [
+        {
+          "type": "scene"
+        },
+        {
+          "type": "scene"
+        }
+      ],
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
 }
 {% endschema %}

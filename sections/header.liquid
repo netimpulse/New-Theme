@@ -148,11 +148,12 @@
                   {%- when 'promo_card' -%}
                     {%- if block.settings.image != blank -%}
                       <a href="{{ block.settings.link | default: '#' }}" class="site-drawer__promo">
+                        {%- assign promo_alt = block.settings.heading | default: 'Promo' | escape -%}
                         {{ block.settings.image | image_url: width: 600 | image_tag:
                            loading: 'lazy',
                            sizes: '(min-width: 990px) 320px, 80vw',
                            widths: '320,480,640',
-                           alt: block.settings.heading | default: 'Promo' | escape,
+                           alt: promo_alt,
                            class: 'site-drawer__promo-image' }}
                         <div class="site-drawer__promo-content">
                           <strong>{{ block.settings.heading | escape }}</strong>

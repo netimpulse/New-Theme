@@ -1,3 +1,4 @@
+{%- assign logo_alt_text = shop.name | escape -%}
 {%- comment -%}
   Rendert Shop-Logo als Bild oder Textlink.
   Akzeptiert: settings (section.settings)
@@ -12,7 +13,7 @@
         fetchpriority: 'high',
         sizes: '(min-width: 768px) 200px, 120px',
         widths: '120,200,280,400,560',
-        alt: shop.name | escape,
+        alt: logo_alt_text,
         style: 'width:' | append: settings.logo_width | append: 'px;',
         class: 'site-logo__image'
     }}

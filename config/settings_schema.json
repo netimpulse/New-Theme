@@ -1,24 +1,27 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Skeleton",
-    "theme_version": "0.1.0",
-    "theme_author": "Shopify",
+    "theme_name": "Skeleton Fashion",
+    "theme_version": "0.2.0",
+    "theme_author": "netimpulse",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:general.typography",
     "settings": [
-      {
-        "type": "header",
-        "content": "t:general.fonts"
-      },
+      { "type": "header", "content": "t:general.fonts" },
       {
         "type": "font_picker",
         "id": "type_primary_font",
         "default": "work_sans_n4",
         "label": "t:general.primary"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "default": "work_sans_n7",
+        "label": "Überschriften-Schrift"
       }
     ]
   },
@@ -30,14 +33,8 @@
         "id": "max_page_width",
         "label": "t:labels.page_width",
         "options": [
-          {
-            "value": "90rem",
-            "label": "t:options.page_width.narrow"
-          },
-          {
-            "value": "110rem",
-            "label": "t:options.page_width.wide"
-          }
+          { "value": "90rem", "label": "t:options.page_width.narrow" },
+          { "value": "110rem", "label": "t:options.page_width.wide" }
         ],
         "default": "90rem"
       },
@@ -65,7 +62,7 @@
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#333333",
+        "default": "#111111",
         "label": "t:labels.foreground"
       },
       {
@@ -77,6 +74,75 @@
         "unit": "px",
         "label": "t:labels.input_corner_radius",
         "default": 4
+      }
+    ]
+  },
+  {
+    "name": "Farbschemata",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Hintergrund",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Hintergrund-Verlauf",
+            "info": "Überschreibt den Hintergrund, wenn gesetzt."
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text",
+            "default": "#111111"
+          },
+          {
+            "type": "color",
+            "id": "button_background",
+            "label": "Button-Hintergrund",
+            "default": "#111111"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "Button-Text",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label",
+            "label": "Outline-Button-Text",
+            "default": "#111111"
+          },
+          {
+            "type": "color",
+            "id": "border",
+            "label": "Rahmen",
+            "default": "#E5E5E5"
+          }
+        ],
+        "role": {
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
+          "text": "text",
+          "links": "text",
+          "icons": "text",
+          "primary_button": "button_background",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button_background",
+          "secondary_button": "background",
+          "on_secondary_button": "secondary_button_label",
+          "secondary_button_border": "secondary_button_label",
+          "borders": "border"
+        }
       }
     ]
   }

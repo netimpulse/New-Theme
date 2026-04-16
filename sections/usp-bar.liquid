@@ -1,11 +1,12 @@
-<section class="usp-bar" data-section-id="{{ section.id }}">
+<section class="usp-bar color-scheme color-{{ section.settings.color_scheme.id }}" data-section-id="{{ section.id }}">
   <div class="usp-bar__inner">
     {%- for block in section.blocks -%}
       <div class="usp-bar__item" {{ block.shopify_attributes }}>
         {%- if block.settings.icon != blank -%}
           <div class="usp-bar__icon">
+            {%- assign usp_alt = block.settings.heading | default: '' | escape -%}
             {{ block.settings.icon | image_url: width: 96 | image_tag:
-               loading: 'lazy', sizes: '48px', widths: '48,96,144', alt: block.settings.heading | default: '' | escape }}
+               loading: 'lazy', sizes: '48px', widths: '48,96,144', alt: usp_alt }}
           </div>
         {%- endif -%}
         <div class="usp-bar__text">
@@ -17,6 +18,23 @@
   </div>
 </section>
 {% style %}
+  {%- assign scheme = section.settings.color_scheme -%}
+  {%- if scheme -%}
+  .color-{{ scheme.id }} {
+    --color-background: {{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }};
+    --color-text: {{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }};
+    --color-button: {{ scheme.settings.button_background.red }}, {{ scheme.settings.button_background.green }}, {{ scheme.settings.button_background.blue }};
+    --color-button-label: {{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }};
+    --color-secondary-button-label: {{ scheme.settings.secondary_button_label.red }}, {{ scheme.settings.secondary_button_label.green }}, {{ scheme.settings.secondary_button_label.blue }};
+    --color-border: {{ scheme.settings.border.red }}, {{ scheme.settings.border.green }}, {{ scheme.settings.border.blue }};
+    color: rgb(var(--color-text));
+    background-color: rgb(var(--color-background));
+    {%- if scheme.settings.background_gradient != blank -%}
+    background-image: {{ scheme.settings.background_gradient }};
+    {%- endif -%}
+  }
+  {%- endif -%}
+
   #shopify-section-{{ section.id }} { --usp-bg: {{ section.settings.bg_color }}; --usp-fg: {{ section.settings.text_color }}; }
 {% endstyle %}
 {{ 'section-usp-bar.css' | asset_url | stylesheet_tag }}
@@ -26,8 +44,24 @@
   "tag": "section",
   "class": "section-usp-bar",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Hintergrund", "default": "#f6f5f2" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#111111" }
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Hintergrund",
+      "default": "#f6f5f2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#111111"
+    }
   ],
   "blocks": [
     {
@@ -35,9 +69,23 @@
       "name": "USP",
       "limit": 6,
       "settings": [
-        { "type": "image_picker", "id": "icon", "label": "Icon (optional)" },
-        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Kostenloser Versand" },
-        { "type": "text", "id": "subtext", "label": "Untertext", "default": "Ab 80 € Bestellwert" }
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (optional)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Überschrift",
+          "default": "Kostenloser Versand"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Untertext",
+          "default": "Ab 80 € Bestellwert"
+        }
       ]
     }
   ],
@@ -45,13 +93,45 @@
     {
       "name": "USP-Bar",
       "blocks": [
-        { "type": "usp", "settings": { "heading": "Kostenloser Versand", "subtext": "Ab 80 €" } },
-        { "type": "usp", "settings": { "heading": "30 Tage Rückgabe", "subtext": "Unkompliziert" } },
-        { "type": "usp", "settings": { "heading": "Sichere Bezahlung", "subtext": "SSL-verschlüsselt" } },
-        { "type": "usp", "settings": { "heading": "Nachhaltig", "subtext": "Zertifizierte Materialien" } }
-      ]
+        {
+          "type": "usp",
+          "settings": {
+            "heading": "Kostenloser Versand",
+            "subtext": "Ab 80 €"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "heading": "30 Tage Rückgabe",
+            "subtext": "Unkompliziert"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "heading": "Sichere Bezahlung",
+            "subtext": "SSL-verschlüsselt"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "heading": "Nachhaltig",
+            "subtext": "Zertifizierte Materialien"
+          }
+        }
+      ],
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
     }
   ],
-  "disabled_on": { "groups": ["header", "footer"] }
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
 }
 {% endschema %}
