@@ -116,6 +116,13 @@ body {
   grid-column: 1 / -1;
 }
 
+/* Header and footer sections must be full-width (edge to edge),
+   they constrain their own content via inner max-width. */
+.section-site-header > *,
+.section-site-footer > * {
+  grid-column: 1 / -1;
+}
+
 /* ===== Fashion theme utilities ===== */
 .visually-hidden {
   position: absolute !important;
