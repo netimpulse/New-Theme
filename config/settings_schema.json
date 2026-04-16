@@ -10,7 +10,10 @@
   {
     "name": "t:general.typography",
     "settings": [
-      { "type": "header", "content": "t:general.fonts" },
+      {
+        "type": "header",
+        "content": "t:general.fonts"
+      },
       {
         "type": "font_picker",
         "id": "type_primary_font",
@@ -33,8 +36,14 @@
         "id": "max_page_width",
         "label": "t:labels.page_width",
         "options": [
-          { "value": "90rem", "label": "t:options.page_width.narrow" },
-          { "value": "110rem", "label": "t:options.page_width.wide" }
+          {
+            "value": "90rem",
+            "label": "t:options.page_width.narrow"
+          },
+          {
+            "value": "110rem",
+            "label": "t:options.page_width.wide"
+          }
         ],
         "default": "90rem"
       },
@@ -100,13 +109,13 @@
             "type": "color",
             "id": "text",
             "label": "Text",
-            "default": "#111111"
+            "default": "#121212"
           },
           {
             "type": "color",
-            "id": "button_background",
+            "id": "button",
             "label": "Button-Hintergrund",
-            "default": "#111111"
+            "default": "#121212"
           },
           {
             "type": "color",
@@ -118,30 +127,29 @@
             "type": "color",
             "id": "secondary_button_label",
             "label": "Outline-Button-Text",
-            "default": "#111111"
+            "default": "#121212"
           },
           {
             "type": "color",
-            "id": "border",
-            "label": "Rahmen",
-            "default": "#E5E5E5"
+            "id": "shadow",
+            "label": "Schatten",
+            "default": "#121212"
           }
         ],
         "role": {
+          "text": "text",
           "background": {
             "solid": "background",
             "gradient": "background_gradient"
           },
-          "text": "text",
-          "links": "text",
+          "links": "secondary_button_label",
           "icons": "text",
-          "primary_button": "button_background",
+          "primary_button": "button",
           "on_primary_button": "button_label",
-          "primary_button_border": "button_background",
+          "primary_button_border": "button",
           "secondary_button": "background",
           "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label",
-          "borders": "border"
+          "secondary_button_border": "secondary_button_label"
         }
       }
     ]

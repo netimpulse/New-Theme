@@ -86,14 +86,14 @@
   .color-{{ scheme.id }} {
     --color-background: {{ scheme.settings.background.red }}, {{ scheme.settings.background.green }}, {{ scheme.settings.background.blue }};
     --color-text: {{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }};
-    --color-button: {{ scheme.settings.button_background.red }}, {{ scheme.settings.button_background.green }}, {{ scheme.settings.button_background.blue }};
+    --color-button: {{ scheme.settings.button.red }}, {{ scheme.settings.button.green }}, {{ scheme.settings.button.blue }};
     --color-button-label: {{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }};
     --color-secondary-button-label: {{ scheme.settings.secondary_button_label.red }}, {{ scheme.settings.secondary_button_label.green }}, {{ scheme.settings.secondary_button_label.blue }};
-    --color-border: {{ scheme.settings.border.red }}, {{ scheme.settings.border.green }}, {{ scheme.settings.border.blue }};
+    --color-shadow: {{ scheme.settings.shadow.red }}, {{ scheme.settings.shadow.green }}, {{ scheme.settings.shadow.blue }};
     color: rgb(var(--color-text));
     background-color: rgb(var(--color-background));
     {%- if scheme.settings.background_gradient != blank -%}
-    background-image: {{ scheme.settings.background_gradient }};
+    background: {{ scheme.settings.background_gradient }};
     {%- endif -%}
   }
   {%- endif -%}
