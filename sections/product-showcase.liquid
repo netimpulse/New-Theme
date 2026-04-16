@@ -111,7 +111,7 @@
             {%- endif -%}
 
             <button type="button" class="product-video__replay" aria-label="Video erneut abspielen">
-              {{ 'icon-play.svg' | inline_asset_content }}
+              {%- render 'icon', name: 'play' -%}
             </button>
           </product-video>
         </div>
@@ -278,7 +278,7 @@
                     <details class="product-showcase__accordion-item" {{ block.shopify_attributes }}>
                       <summary>
                         <span>{{ block.settings.heading | escape }}</span>
-                        {{ 'icon-chevron.svg' | inline_asset_content }}
+                        {%- render 'icon', name: 'chevron' -%}
                       </summary>
                       <div class="product-showcase__accordion-body">{{ block.settings.content }}</div>
                     </details>

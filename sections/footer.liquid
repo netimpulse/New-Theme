@@ -25,19 +25,19 @@
       {%- if section.settings.show_socials -%}
         <ul class="site-footer__socials" role="list">
           {%- if section.settings.social_instagram != blank -%}
-            <li><a href="{{ section.settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{{ 'icon-instagram.svg' | inline_asset_content }}</a></li>
+            <li><a href="{{ section.settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{%- render 'icon', name: 'instagram' -%}</a></li>
           {%- endif -%}
           {%- if section.settings.social_tiktok != blank -%}
-            <li><a href="{{ section.settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">{{ 'icon-tiktok.svg' | inline_asset_content }}</a></li>
+            <li><a href="{{ section.settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">{%- render 'icon', name: 'tiktok' -%}</a></li>
           {%- endif -%}
           {%- if section.settings.social_facebook != blank -%}
-            <li><a href="{{ section.settings.social_facebook }}" aria-label="Facebook" target="_blank" rel="noopener">{{ 'icon-facebook.svg' | inline_asset_content }}</a></li>
+            <li><a href="{{ section.settings.social_facebook }}" aria-label="Facebook" target="_blank" rel="noopener">{%- render 'icon', name: 'facebook' -%}</a></li>
           {%- endif -%}
           {%- if section.settings.social_youtube != blank -%}
-            <li><a href="{{ section.settings.social_youtube }}" aria-label="YouTube" target="_blank" rel="noopener">{{ 'icon-youtube.svg' | inline_asset_content }}</a></li>
+            <li><a href="{{ section.settings.social_youtube }}" aria-label="YouTube" target="_blank" rel="noopener">{%- render 'icon', name: 'youtube' -%}</a></li>
           {%- endif -%}
           {%- if section.settings.social_pinterest != blank -%}
-            <li><a href="{{ section.settings.social_pinterest }}" aria-label="Pinterest" target="_blank" rel="noopener">{{ 'icon-pinterest.svg' | inline_asset_content }}</a></li>
+            <li><a href="{{ section.settings.social_pinterest }}" aria-label="Pinterest" target="_blank" rel="noopener">{%- render 'icon', name: 'pinterest' -%}</a></li>
           {%- endif -%}
         </ul>
       {%- endif -%}
@@ -83,7 +83,7 @@
                   required
                 >
                 <button type="submit" aria-label="Anmelden">
-                  {{ 'icon-arrow.svg' | inline_asset_content }}
+                  {%- render 'icon', name: 'arrow' -%}
                 </button>
               </div>
               {%- if form.posted_successfully? -%}

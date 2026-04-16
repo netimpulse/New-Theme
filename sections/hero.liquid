@@ -115,10 +115,10 @@
 
       {%- if slides.size > 1 -%}
         <button type="button" class="hero__arrow hero__arrow--prev" aria-label="Vorheriger Slide" data-prev>
-          {{ 'icon-chevron.svg' | inline_asset_content }}
+          {%- render 'icon', name: 'chevron' -%}
         </button>
         <button type="button" class="hero__arrow hero__arrow--next" aria-label="Nächster Slide" data-next>
-          {{ 'icon-chevron.svg' | inline_asset_content }}
+          {%- render 'icon', name: 'chevron' -%}
         </button>
         <div class="hero__dots" role="tablist" aria-label="Slides">
           {%- for block in slides -%}
