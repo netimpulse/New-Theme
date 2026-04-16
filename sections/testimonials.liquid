@@ -47,21 +47,21 @@
 {{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "Testimonials",
+  "name": "t:sections.testimonials.name_testimonials",
   "tag": "section",
   "class": "section-testimonials",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.testimonials.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Überschrift",
-      "default": "Was unsere Kund:innen sagen"
+      "label": "t:sections.testimonials.label_ueberschrift",
+      "default": "t:sections.testimonials.default_was_unsere_kund_innen_sagen"
     },
     {
       "type": "range",
@@ -69,19 +69,19 @@
       "min": 1,
       "max": 4,
       "step": 1,
-      "label": "Spalten (Desktop)",
+      "label": "t:sections.testimonials.label_spalten_desktop",
       "default": 3
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.testimonials.label_hintergrund",
       "default": "#f6f5f2"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.testimonials.label_text",
       "default": "#111111"
     },
     {
@@ -91,7 +91,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand oben",
+      "label": "t:sections.testimonials.label_abstand_oben",
       "default": 64
     },
     {
@@ -101,33 +101,33 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand unten",
+      "label": "t:sections.testimonials.label_abstand_unten",
       "default": 64
     }
   ],
   "blocks": [
     {
       "type": "testimonial",
-      "name": "Testimonial",
+      "name": "t:sections.testimonials_blocks.name_testimonial",
       "limit": 9,
       "settings": [
         {
           "type": "richtext",
           "id": "quote",
-          "label": "Zitat",
-          "default": "<p>Fantastische Qualität, sitzt perfekt und ein schneller Versand. 5 von 5 Sternen.</p>"
+          "label": "t:sections.testimonials.label_zitat",
+          "default": "t:sections.testimonials.default_p_fantastische_qualitaet_sitzt_perfekt_u"
         },
         {
           "type": "text",
           "id": "author",
-          "label": "Autor:in",
-          "default": "Lena K."
+          "label": "t:sections.testimonials.label_autor_in",
+          "default": "t:sections.testimonials.default_lena_k"
         },
         {
           "type": "text",
           "id": "meta",
-          "label": "Meta (z.B. Produkt)",
-          "default": "Verifizierte Käuferin"
+          "label": "t:sections.testimonials.label_meta_z_b_produkt",
+          "default": "t:sections.testimonials.default_verifizierte_kaeuferin"
         },
         {
           "type": "range",
@@ -135,7 +135,7 @@
           "min": 0,
           "max": 5,
           "step": 1,
-          "label": "Sterne",
+          "label": "t:sections.testimonials.label_sterne",
           "default": 5
         }
       ]
@@ -143,7 +143,7 @@
   ],
   "presets": [
     {
-      "name": "Testimonials",
+      "name": "t:sections.testimonials.preset_testimonials",
       "blocks": [
         {
           "type": "testimonial"

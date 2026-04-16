@@ -52,7 +52,7 @@
   </div>
 </div>
 
-{% stylesheet %}
+<style>
   .welcome {
     display: grid;
     grid-template-columns: var(--content-grid);
@@ -128,15 +128,15 @@
     padding: 3px 10px 5px;
     text-decoration: none;
   }
-{% endstylesheet %}
+</style>
 
 {% schema %}
 {
-  "name": "Hello World",
+  "name": "t:sections.hello_world.name_hello_world",
   "settings": [],
   "presets": [
     {
-      "name": "Hello World Template",
+      "name": "t:sections.hello_world.preset_hello_world_template",
       "category": "Demo"
     }
   ]

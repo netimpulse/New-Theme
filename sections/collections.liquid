@@ -34,7 +34,7 @@
   {% endfor %}
 </div>
 
-{% stylesheet %}
+<style>
   .collections {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(var(--collection-card-size), 100%), 1fr));
@@ -51,19 +51,25 @@
     flex-direction: column;
     width: 100%;
   }
-{% endstylesheet %}
+</style>
 
 {% schema %}
 {
-  "name": "Kollektionen",
+  "name": "t:sections.collections.name_kollektionen",
   "settings": [
     {
       "type": "select",
       "id": "grid_item_width",
       "label": "t:labels.grid_item_width",
       "options": [
-        { "value": "collections--compact", "label": "t:options.size.small" },
-        { "value": "collections--full", "label": "t:options.size.large" }
+        {
+          "value": "collections--compact",
+          "label": "t:options.size.small"
+        },
+        {
+          "value": "collections--full",
+          "label": "t:options.size.large"
+        }
       ],
       "default": "collections--full"
     },
@@ -78,6 +84,10 @@
       "default": 10
     }
   ],
-  "presets": [{ "name": "t:general.collections_grid" }]
+  "presets": [
+    {
+      "name": "t:general.collections_grid"
+    }
+  ]
 }
 {% endschema %}

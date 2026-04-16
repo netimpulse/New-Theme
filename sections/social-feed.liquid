@@ -49,26 +49,26 @@
 {{ 'section-social-feed.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "Social Feed",
+  "name": "t:sections.social_feed.name_social_feed",
   "tag": "section",
   "class": "section-social-feed",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.social_feed.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Überschrift",
-      "default": "Folge uns"
+      "label": "t:sections.social_feed.label_ueberschrift",
+      "default": "t:sections.social_feed.default_folge_uns"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "Profil-Link"
+      "label": "t:sections.social_feed.label_profil_link"
     },
     {
       "type": "range",
@@ -76,19 +76,19 @@
       "min": 3,
       "max": 6,
       "step": 1,
-      "label": "Spalten (Desktop)",
+      "label": "t:sections.social_feed.label_spalten_desktop",
       "default": 5
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.social_feed.label_hintergrund",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.social_feed.label_text",
       "default": "#111111"
     },
     {
@@ -98,7 +98,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand oben",
+      "label": "t:sections.social_feed.label_abstand_oben",
       "default": 48
     },
     {
@@ -108,32 +108,32 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand unten",
+      "label": "t:sections.social_feed.label_abstand_unten",
       "default": 48
     }
   ],
   "blocks": [
     {
       "type": "post",
-      "name": "Post",
+      "name": "t:sections.social_feed_blocks.name_post",
       "limit": 10,
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Bild"
+          "label": "t:sections.social_feed.label_bild"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link zum Post"
+          "label": "t:sections.social_feed.label_link_zum_post"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Social Feed",
+      "name": "t:sections.social_feed.preset_social_feed",
       "blocks": [
         {
           "type": "post"

@@ -184,127 +184,127 @@
 
 {% schema %}
 {
-  "name": "Footer",
+  "name": "t:sections.footer.name_footer",
   "tag": "section",
   "class": "section-site-footer",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.footer.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "header",
-      "content": "Marke"
+      "content": "t:sections.footer.content_marke"
     },
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Footer-Logo"
+      "label": "t:sections.footer.label_footer_logo"
     },
     {
       "type": "richtext",
       "id": "about",
-      "label": "Kurzbeschreibung",
-      "default": "<p>Moderne Fashion-Brand für jeden Tag. Nachhaltig gedacht, zeitlos geschnitten.</p>"
+      "label": "t:sections.footer.label_kurzbeschreibung",
+      "default": "t:sections.footer.default_p_moderne_fashion_brand_fuer_jeden_tag_n"
     },
     {
       "type": "header",
-      "content": "Social Media"
+      "content": "t:sections.footer.content_social_media"
     },
     {
       "type": "checkbox",
       "id": "show_socials",
-      "label": "Social Icons anzeigen",
+      "label": "t:sections.footer.label_social_icons_anzeigen",
       "default": true
     },
     {
       "type": "url",
       "id": "social_instagram",
-      "label": "Instagram URL"
+      "label": "t:sections.footer.label_instagram_url"
     },
     {
       "type": "url",
       "id": "social_tiktok",
-      "label": "TikTok URL"
+      "label": "t:sections.footer.label_tiktok_url"
     },
     {
       "type": "url",
       "id": "social_facebook",
-      "label": "Facebook URL"
+      "label": "t:sections.footer.label_facebook_url"
     },
     {
       "type": "url",
       "id": "social_youtube",
-      "label": "YouTube URL"
+      "label": "t:sections.footer.label_youtube_url"
     },
     {
       "type": "url",
       "id": "social_pinterest",
-      "label": "Pinterest URL"
+      "label": "t:sections.footer.label_pinterest_url"
     },
     {
       "type": "header",
-      "content": "Rechtliches (Shopify-Policies)"
+      "content": "t:sections.footer.content_rechtliches_shopify_policies"
     },
     {
       "type": "paragraph",
-      "content": "AGB, Datenschutz, Widerrufsbelehrung, Impressum & Versand werden automatisch aus deinen Shopify-Richtlinien gezogen (Einstellungen → Richtlinien)."
+      "content": "t:sections.footer.content_agb_datenschutz_widerrufsbelehrung_impre"
     },
     {
       "type": "checkbox",
       "id": "show_policies",
-      "label": "Policies-Zeile anzeigen",
+      "label": "t:sections.footer.label_policies_zeile_anzeigen",
       "default": true
     },
     {
       "type": "header",
-      "content": "Unten-Leiste"
+      "content": "t:sections.footer.content_unten_leiste"
     },
     {
       "type": "checkbox",
       "id": "show_payments",
-      "label": "Zahlungs-Icons anzeigen",
+      "label": "t:sections.footer.label_zahlungs_icons_anzeigen",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "show_country_selector",
-      "label": "Länder-/Währungsauswahl anzeigen",
+      "label": "t:sections.footer.label_laender_waehrungsauswahl_anzeigen",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "show_powered",
-      "label": "„Powered by Shopify\" anzeigen",
+      "label": "t:sections.footer.label_powered_by_shopify_anzeigen",
       "default": false
     },
     {
       "type": "header",
-      "content": "Farben"
+      "content": "t:sections.footer.content_farben"
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.footer.label_hintergrund",
       "default": "#0f0f0f"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.footer.label_text",
       "default": "#e6e6e6"
     },
     {
       "type": "color",
       "id": "heading_color",
-      "label": "Überschriften",
+      "label": "t:sections.footer.label_ueberschriften",
       "default": "#ffffff"
     },
     {
       "type": "header",
-      "content": "Abstände"
+      "content": "t:sections.footer.content_abstaende"
     },
     {
       "type": "range",
@@ -313,7 +313,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Oben",
+      "label": "t:sections.footer.label_oben",
       "default": 64
     },
     {
@@ -323,77 +323,77 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Unten",
+      "label": "t:sections.footer.label_unten",
       "default": 40
     }
   ],
   "blocks": [
     {
       "type": "menu",
-      "name": "Menü-Spalte",
+      "name": "t:sections.footer_blocks.name_menue_spalte",
       "limit": 4,
       "settings": [
         {
           "type": "text",
           "id": "heading",
-          "label": "Überschrift",
-          "default": "Shop"
+          "label": "t:sections.footer.label_ueberschrift",
+          "default": "t:sections.footer.default_shop"
         },
         {
           "type": "link_list",
           "id": "menu",
-          "label": "Menü"
+          "label": "t:sections.footer.label_menue"
         }
       ]
     },
     {
       "type": "text",
-      "name": "Text-Spalte",
+      "name": "t:sections.footer_blocks.name_text_spalte",
       "limit": 2,
       "settings": [
         {
           "type": "text",
           "id": "heading",
-          "label": "Überschrift",
-          "default": "Hilfe"
+          "label": "t:sections.footer.label_ueberschrift",
+          "default": "t:sections.footer.default_hilfe"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text",
-          "default": "<p>Kontakt: hallo@dein-shop.de<br>Mo–Fr 9–17 Uhr</p>"
+          "label": "t:sections.footer.label_text",
+          "default": "t:sections.footer.default_p_kontakt_hallo_dein_shop_de_br_mo_fr_9_"
         }
       ]
     },
     {
       "type": "newsletter",
-      "name": "Newsletter",
+      "name": "t:sections.footer_blocks.name_newsletter",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "heading",
-          "label": "Überschrift",
-          "default": "Newsletter"
+          "label": "t:sections.footer.label_ueberschrift",
+          "default": "t:sections.footer.default_newsletter"
         },
         {
           "type": "text",
           "id": "text",
-          "label": "Text",
-          "default": "10 % auf deine erste Bestellung – exklusive Drops vorab."
+          "label": "t:sections.footer.label_text",
+          "default": "t:sections.footer.default_10_auf_deine_erste_bestellung_exklusive_"
         },
         {
           "type": "text",
           "id": "placeholder",
-          "label": "Placeholder",
-          "default": "E-Mail-Adresse"
+          "label": "t:sections.footer.label_placeholder",
+          "default": "t:sections.footer.default_e_mail_adresse"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Footer",
+      "name": "t:sections.footer.preset_footer",
       "blocks": [
         {
           "type": "menu"

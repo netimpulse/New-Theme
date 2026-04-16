@@ -71,26 +71,26 @@
 {{ 'section-collection-grid.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "Kollektionen-Grid",
+  "name": "t:sections.collection_grid.name_kollektionen_grid",
   "tag": "section",
   "class": "section-collection-grid",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.collection_grid.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Überschrift",
-      "default": "Shop by Category"
+      "label": "t:sections.collection_grid.label_ueberschrift",
+      "default": "t:sections.collection_grid.default_shop_by_category"
     },
     {
       "type": "text",
       "id": "subheading",
-      "label": "Unterüberschrift"
+      "label": "t:sections.collection_grid.label_unterueberschrift"
     },
     {
       "type": "range",
@@ -98,19 +98,19 @@
       "min": 2,
       "max": 6,
       "step": 1,
-      "label": "Spalten (Desktop)",
+      "label": "t:sections.collection_grid.label_spalten_desktop",
       "default": 3
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.collection_grid.label_hintergrund",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.collection_grid.label_text",
       "default": "#111111"
     },
     {
@@ -120,7 +120,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand oben",
+      "label": "t:sections.collection_grid.label_abstand_oben",
       "default": 56
     },
     {
@@ -130,47 +130,47 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand unten",
+      "label": "t:sections.collection_grid.label_abstand_unten",
       "default": 56
     }
   ],
   "blocks": [
     {
       "type": "category",
-      "name": "Kategorie",
+      "name": "t:sections.collection_grid_blocks.name_kategorie",
       "limit": 12,
       "settings": [
         {
           "type": "collection",
           "id": "collection",
-          "label": "Kollektion"
+          "label": "t:sections.collection_grid.label_kollektion"
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Bild (überschreibt Kollektions-Bild)"
+          "label": "t:sections.collection_grid.label_bild_ueberschreibt_kollektions_bild"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Überschrift (überschreibt Kollektions-Titel)"
+          "label": "t:sections.collection_grid.label_ueberschrift_ueberschreibt_kollektions_t"
         },
         {
           "type": "text",
           "id": "subtext",
-          "label": "Untertext"
+          "label": "t:sections.collection_grid.label_untertext"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link (überschreibt Kollektions-URL)"
+          "label": "t:sections.collection_grid.label_link_ueberschreibt_kollektions_url"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Kollektionen-Grid",
+      "name": "t:sections.collection_grid.preset_kollektionen_grid",
       "blocks": [
         {
           "type": "category",

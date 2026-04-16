@@ -47,26 +47,26 @@
 {{ 'section-featured-products.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "Produkt-Grid",
+  "name": "t:sections.featured_products.name_produkt_grid",
   "tag": "section",
   "class": "section-featured-products",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.featured_products.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Überschrift",
-      "default": "Bestseller"
+      "label": "t:sections.featured_products.label_ueberschrift",
+      "default": "t:sections.featured_products.default_bestseller"
     },
     {
       "type": "collection",
       "id": "collection",
-      "label": "Kollektion"
+      "label": "t:sections.featured_products.label_kollektion"
     },
     {
       "type": "range",
@@ -74,7 +74,7 @@
       "min": 2,
       "max": 24,
       "step": 1,
-      "label": "Max. Produkte",
+      "label": "t:sections.featured_products.label_max_produkte",
       "default": 8
     },
     {
@@ -83,25 +83,25 @@
       "min": 2,
       "max": 6,
       "step": 1,
-      "label": "Spalten (Desktop)",
+      "label": "t:sections.featured_products.label_spalten_desktop",
       "default": 4
     },
     {
       "type": "checkbox",
       "id": "show_vendor",
-      "label": "Marke anzeigen",
+      "label": "t:sections.featured_products.label_marke_anzeigen",
       "default": false
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.featured_products.label_hintergrund",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.featured_products.label_text",
       "default": "#111111"
     },
     {
@@ -111,7 +111,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand oben",
+      "label": "t:sections.featured_products.label_abstand_oben",
       "default": 56
     },
     {
@@ -121,13 +121,13 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand unten",
+      "label": "t:sections.featured_products.label_abstand_unten",
       "default": 56
     }
   ],
   "presets": [
     {
-      "name": "Produkt-Grid",
+      "name": "t:sections.featured_products.preset_produkt_grid",
       "settings": {
         "color_scheme": "scheme-1"
       }

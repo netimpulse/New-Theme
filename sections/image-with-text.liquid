@@ -51,76 +51,76 @@
 {{ 'section-image-with-text.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "Bild mit Text",
+  "name": "t:sections.image_with_text.name_bild_mit_text",
   "tag": "section",
   "class": "section-image-with-text",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.image_with_text.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Bild"
+      "label": "t:sections.image_with_text.label_bild"
     },
     {
       "type": "select",
       "id": "image_side",
-      "label": "Bild-Seite",
+      "label": "t:sections.image_with_text.label_bild_seite",
       "default": "left",
       "options": [
         {
           "value": "left",
-          "label": "Links"
+          "label": "t:sections.image_with_text.option_links"
         },
         {
           "value": "right",
-          "label": "Rechts"
+          "label": "t:sections.image_with_text.option_rechts"
         }
       ]
     },
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Unsere Geschichte"
+      "label": "t:sections.image_with_text.label_eyebrow",
+      "default": "t:sections.image_with_text.default_unsere_geschichte"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Überschrift",
-      "default": "Zeitlose Mode, sorgfältig gemacht"
+      "label": "t:sections.image_with_text.label_ueberschrift",
+      "default": "t:sections.image_with_text.default_zeitlose_mode_sorgfaeltig_gemacht"
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text",
-      "default": "<p>Wir designen in Berlin und produzieren in Portugal – mit zertifizierten Materialien und kurzen Lieferketten.</p>"
+      "label": "t:sections.image_with_text.label_text",
+      "default": "t:sections.image_with_text.default_p_wir_designen_in_berlin_und_produzieren"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Button-Text",
-      "default": "Mehr erfahren"
+      "label": "t:sections.image_with_text.label_button_text",
+      "default": "t:sections.image_with_text.default_mehr_erfahren"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button-Link"
+      "label": "t:sections.image_with_text.label_button_link"
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.image_with_text.label_hintergrund",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.image_with_text.label_text",
       "default": "#111111"
     },
     {
@@ -130,7 +130,7 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand oben",
+      "label": "t:sections.image_with_text.label_abstand_oben",
       "default": 48
     },
     {
@@ -140,13 +140,13 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "Abstand unten",
+      "label": "t:sections.image_with_text.label_abstand_unten",
       "default": 48
     }
   ],
   "presets": [
     {
-      "name": "Bild mit Text",
+      "name": "t:sections.image_with_text.preset_bild_mit_text",
       "settings": {
         "color_scheme": "scheme-1"
       }

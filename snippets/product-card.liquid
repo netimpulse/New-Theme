@@ -1,16 +1,15 @@
 {%- comment -%}
-  Rendert eine Produkt-Karte für Grids/Lookbooks.
+  Renders a product card for grids/lookbooks.
 
-  Akzeptiert:
-  - product: {Object} Produkt (required)
-  - sizes: {String} sizes-Attribut für responsive Bilder (optional)
-  - show_vendor: {Boolean} (optional, default: false)
-  - show_quick_add: {Boolean} (optional, default: true)
+  @param {Object} product - Product object (required)
+  @param {String} [sizes] - sizes attribute for responsive images
+  @param {Boolean} [show_vendor] - Show vendor name (default: false)
+  @param {Boolean} [show_quick_add] - Show quick-add button (default: true)
 {%- endcomment -%}
 {%- liquid
   assign card_sizes = sizes | default: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw'
   assign card_widths = '300,450,600,750,900,1200'
-  assign product_title_safe = product.title | default: 'Beispielprodukt' | escape
+  assign product_title_safe = product.title | default: 'Example Product' | escape
   assign primary_alt = product.featured_media.alt | default: product.title | escape
 -%}
 <article class="product-card">
@@ -55,8 +54,8 @@
   {%- if show_quick_add != false and product.available -%}
     <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="product-card__quick-add" data-quick-add-form>
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="product-card__quick-add-btn" aria-label="{{ product_title_safe }} in den Warenkorb">
-        + In den Warenkorb
+      <button type="submit" class="product-card__quick-add-btn" name="add" aria-label="{{ 'products.product.add_to_cart' | t }} — {{ product_title_safe }}">
+        {{ 'products.product.add_to_cart' | t }}
       </button>
     </form>
   {%- endif -%}

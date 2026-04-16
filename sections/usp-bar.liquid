@@ -40,58 +40,58 @@
 {{ 'section-usp-bar.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
-  "name": "USP-Bar",
+  "name": "t:sections.usp_bar.name_usp_bar",
   "tag": "section",
   "class": "section-usp-bar",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.usp_bar.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrund",
+      "label": "t:sections.usp_bar.label_hintergrund",
       "default": "#f6f5f2"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
+      "label": "t:sections.usp_bar.label_text",
       "default": "#111111"
     }
   ],
   "blocks": [
     {
       "type": "usp",
-      "name": "USP",
+      "name": "t:sections.usp_bar_blocks.name_usp",
       "limit": 6,
       "settings": [
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Icon (optional)"
+          "label": "t:sections.usp_bar.label_icon_optional"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Überschrift",
-          "default": "Kostenloser Versand"
+          "label": "t:sections.usp_bar.label_ueberschrift",
+          "default": "t:sections.usp_bar.default_kostenloser_versand"
         },
         {
           "type": "text",
           "id": "subtext",
-          "label": "Untertext",
-          "default": "Ab 80 € Bestellwert"
+          "label": "t:sections.usp_bar.label_untertext",
+          "default": "t:sections.usp_bar.default_ab_80_bestellwert"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "USP-Bar",
+      "name": "t:sections.usp_bar.preset_usp_bar",
       "blocks": [
         {
           "type": "usp",

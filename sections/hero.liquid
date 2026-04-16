@@ -160,64 +160,64 @@
 
 {% schema %}
 {
-  "name": "Hero",
+  "name": "t:sections.hero.name_hero",
   "tag": "section",
   "class": "section-hero",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.hero.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "select",
       "id": "mode",
-      "label": "Modus",
+      "label": "t:sections.hero.label_modus",
       "default": "slideshow",
       "options": [
         {
           "value": "slideshow",
-          "label": "Diashow (Bilder)"
+          "label": "t:sections.hero.option_diashow_bilder"
         },
         {
           "value": "video",
-          "label": "Video"
+          "label": "t:sections.hero.option_video"
         }
       ]
     },
     {
       "type": "select",
       "id": "height",
-      "label": "Höhe",
+      "label": "t:sections.hero.label_hoehe",
       "default": "large",
       "options": [
         {
           "value": "small",
-          "label": "Klein (50vh)"
+          "label": "t:sections.hero.option_klein_50vh"
         },
         {
           "value": "medium",
-          "label": "Mittel (70vh)"
+          "label": "t:sections.hero.option_mittel_70vh"
         },
         {
           "value": "large",
-          "label": "Groß (85vh)"
+          "label": "t:sections.hero.option_gross_85vh"
         },
         {
           "value": "full",
-          "label": "Voll (100vh)"
+          "label": "t:sections.hero.option_voll_100vh"
         }
       ]
     },
     {
       "type": "header",
-      "content": "Diashow (wenn Modus = Diashow)"
+      "content": "t:sections.hero.content_diashow_wenn_modus_diashow"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Automatisch weiter",
+      "label": "t:sections.hero.label_automatisch_weiter",
       "default": true
     },
     {
@@ -227,22 +227,22 @@
       "max": 10000,
       "step": 500,
       "unit": "ms",
-      "label": "Geschwindigkeit",
+      "label": "t:sections.hero.label_geschwindigkeit",
       "default": 5500
     },
     {
       "type": "header",
-      "content": "Video (wenn Modus = Video)"
+      "content": "t:sections.hero.content_video_wenn_modus_video"
     },
     {
       "type": "video",
       "id": "video",
-      "label": "Hochgeladenes Video"
+      "label": "t:sections.hero.label_hochgeladenes_video"
     },
     {
       "type": "video_url",
       "id": "video_url",
-      "label": "YouTube/Vimeo URL",
+      "label": "t:sections.hero.label_youtube_vimeo_url",
       "accept": [
         "youtube",
         "vimeo"
@@ -251,74 +251,74 @@
     {
       "type": "checkbox",
       "id": "video_loop",
-      "label": "Video loopen",
+      "label": "t:sections.hero.label_video_loopen",
       "default": true
     },
     {
       "type": "image_picker",
       "id": "fallback_image",
-      "label": "Fallback-Bild (wenn kein Video)"
+      "label": "t:sections.hero.label_fallback_bild_wenn_kein_video"
     },
     {
       "type": "header",
-      "content": "Text & Buttons (Video-Modus)",
-      "info": "Im Diashow-Modus werden Text und Buttons pro Slide konfiguriert."
+      "content": "t:sections.hero.content_text_buttons_video_modus",
+      "info": "t:sections.hero.info_im_diashow_modus_werden_text_und_buttons"
     },
     {
       "type": "text",
       "id": "subheading",
-      "label": "Subheading"
+      "label": "t:sections.hero.label_subheading"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Headline",
-      "default": "Kollektion SS26"
+      "label": "t:sections.hero.label_headline",
+      "default": "t:sections.hero.default_kollektion_ss26"
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text",
-      "default": "<p>Neue Silhouetten. Reduzierte Formen.</p>"
+      "label": "t:sections.hero.label_text",
+      "default": "t:sections.hero.default_p_neue_silhouetten_reduzierte_formen_p"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Button 1 Text",
-      "default": "Jetzt shoppen"
+      "label": "t:sections.hero.label_button_1_text",
+      "default": "t:sections.hero.default_jetzt_shoppen"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button 1 Link"
+      "label": "t:sections.hero.label_button_1_link"
     },
     {
       "type": "text",
       "id": "button_label_2",
-      "label": "Button 2 Text (optional)"
+      "label": "t:sections.hero.label_button_2_text_optional"
     },
     {
       "type": "url",
       "id": "button_link_2",
-      "label": "Button 2 Link"
+      "label": "t:sections.hero.label_button_2_link"
     },
     {
       "type": "select",
       "id": "alignment",
-      "label": "Text-Ausrichtung",
+      "label": "t:sections.hero.label_text_ausrichtung",
       "default": "center",
       "options": [
         {
           "value": "left",
-          "label": "Links"
+          "label": "t:sections.hero.option_links"
         },
         {
           "value": "center",
-          "label": "Zentriert"
+          "label": "t:sections.hero.option_zentriert"
         },
         {
           "value": "right",
-          "label": "Rechts"
+          "label": "t:sections.hero.option_rechts"
         }
       ]
     },
@@ -329,87 +329,87 @@
       "max": 80,
       "step": 5,
       "unit": "%",
-      "label": "Overlay-Opazität",
+      "label": "t:sections.hero.label_overlay_opazitaet",
       "default": 25
     },
     {
       "type": "header",
-      "content": "Farben"
+      "content": "t:sections.hero.content_farben"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Textfarbe",
+      "label": "t:sections.hero.label_textfarbe",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "button_bg",
-      "label": "Button Hintergrund",
+      "label": "t:sections.hero.label_button_hintergrund",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "button_fg",
-      "label": "Button Text",
+      "label": "t:sections.hero.label_button_text",
       "default": "#111111"
     }
   ],
   "blocks": [
     {
       "type": "slide",
-      "name": "Slide",
+      "name": "t:sections.hero_blocks.name_slide",
       "limit": 8,
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Bild"
+          "label": "t:sections.hero.label_bild"
         },
         {
           "type": "text",
           "id": "subheading",
-          "label": "Subheading"
+          "label": "t:sections.hero.label_subheading"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Headline",
-          "default": "Neuer Drop"
+          "label": "t:sections.hero.label_headline",
+          "default": "t:sections.hero.default_neuer_drop"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text"
+          "label": "t:sections.hero.label_text"
         },
         {
           "type": "text",
           "id": "button_label",
-          "label": "Button Text",
-          "default": "Entdecken"
+          "label": "t:sections.hero.label_button_text",
+          "default": "t:sections.hero.default_entdecken"
         },
         {
           "type": "url",
           "id": "button_link",
-          "label": "Button Link"
+          "label": "t:sections.hero.label_button_link"
         },
         {
           "type": "select",
           "id": "alignment",
-          "label": "Ausrichtung",
+          "label": "t:sections.hero.label_ausrichtung",
           "default": "center",
           "options": [
             {
               "value": "left",
-              "label": "Links"
+              "label": "t:sections.hero.option_links"
             },
             {
               "value": "center",
-              "label": "Zentriert"
+              "label": "t:sections.hero.option_zentriert"
             },
             {
               "value": "right",
-              "label": "Rechts"
+              "label": "t:sections.hero.option_rechts"
             }
           ]
         },
@@ -420,7 +420,7 @@
           "max": 80,
           "step": 5,
           "unit": "%",
-          "label": "Overlay",
+          "label": "t:sections.hero.label_overlay",
           "default": 25
         }
       ]
@@ -428,7 +428,7 @@
   ],
   "presets": [
     {
-      "name": "Hero Diashow",
+      "name": "t:sections.hero.preset_hero_diashow",
       "settings": {
         "mode": "slideshow",
         "color_scheme": "scheme-1"
@@ -451,7 +451,7 @@
       ]
     },
     {
-      "name": "Hero Video",
+      "name": "t:sections.hero.preset_hero_video",
       "settings": {
         "mode": "video",
         "heading": "Kollektion SS26",

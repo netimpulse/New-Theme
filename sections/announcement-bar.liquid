@@ -21,7 +21,7 @@
   </div>
 {% endif %}
 
-{% stylesheet %}
+<style>
   .announcement-bar {
     background: var(--ab-bg, #111);
     color: var(--ab-fg, #fff);
@@ -50,7 +50,7 @@
   @media (prefers-reduced-motion: reduce) {
     .announcement-bar__slide { transition: none !important; }
   }
-{% endstylesheet %}
+</style>
 
 <script>
   (function () {
@@ -101,32 +101,32 @@
 {% endstyle %}
 {% schema %}
 {
-  "name": "Ankündigungsbalken",
+  "name": "t:sections.announcement_bar.name_ankuendigungsbalken",
   "tag": "section",
   "class": "section-announcement-bar",
   "settings": [
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Farbschema",
+      "label": "t:sections.announcement_bar.label_farbschema",
       "default": "scheme-1"
     },
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Hintergrundfarbe",
+      "label": "t:sections.announcement_bar.label_hintergrundfarbe",
       "default": "#111111"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Textfarbe",
+      "label": "t:sections.announcement_bar.label_textfarbe",
       "default": "#ffffff"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Automatisch durchlaufen",
+      "label": "t:sections.announcement_bar.label_automatisch_durchlaufen",
       "default": true
     },
     {
@@ -136,32 +136,32 @@
       "max": 10000,
       "step": 500,
       "unit": "ms",
-      "label": "Geschwindigkeit",
+      "label": "t:sections.announcement_bar.label_geschwindigkeit",
       "default": 4000
     }
   ],
   "blocks": [
     {
       "type": "message",
-      "name": "Nachricht",
+      "name": "t:sections.announcement_bar_blocks.name_nachricht",
       "settings": [
         {
           "type": "text",
           "id": "text",
-          "label": "Text",
-          "default": "Kostenloser Versand ab 80 €"
+          "label": "t:sections.announcement_bar.label_text",
+          "default": "t:sections.announcement_bar.default_kostenloser_versand_ab_80"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link (optional)"
+          "label": "t:sections.announcement_bar.label_link_optional"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Ankündigungsbalken",
+      "name": "t:sections.announcement_bar.preset_ankuendigungsbalken",
       "blocks": [
         {
           "type": "message",
